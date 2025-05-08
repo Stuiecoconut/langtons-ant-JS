@@ -11,13 +11,12 @@ body {
   width: 100vw;
   height: 100vh;
   grid-gap: 1px;
-  background-color: gray;
+  background-color: #dddddd;
 }
 
 .tile {
   background: black;
   aspect-ratio: 1 / 1;
-  font-size: xx-small;
 }
 
 .tile.white {

@@ -3,7 +3,7 @@ import Ant from "./Ant.js";
 let tiles = []; // 2D array [row][col]
 let rows, cols;
 let ant;
-let interval;
+let skipSteps = 1; // Number of steps to skip
 
 function createGrid() {
   const grid = document.getElementById("grid");
@@ -49,7 +49,9 @@ function placeAnt() {
 }
 
 function animate() {
-  ant.step();
+  for (let i = 0; i < skipSteps; i++) {
+    ant.step();
+  }
   requestAnimationFrame(animate);
 }
 
