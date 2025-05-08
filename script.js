@@ -9,7 +9,7 @@ function createGrid() {
   const grid = document.getElementById("grid");
   grid.innerHTML = ""; // Clear old tiles
 
-  const tileSize = 15; // desired square size in pixels
+  const tileSize = 5; // desired square size in pixels
   const width = window.innerWidth;
   const height = window.innerHeight;
 
