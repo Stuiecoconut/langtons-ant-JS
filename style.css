@@ -6,6 +6,12 @@ body {
   overflow: hidden;
 }
 
+#container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
 #grid {
   display: grid;
   width: 100vw;
@@ -21,4 +27,49 @@ body {
 
 .tile.white {
   background: white;
+}
+
+#control-panel {
+  position: absolute; /* allows it to float on top */
+  z-index: 10; /* ensures it's above the grid */
+  top: 10px;
+  right: 10px;
+  background: rgba(65, 65, 65, 0.3);
+  transition: background 0.3s ease;
+  color: rgba(255, 255, 255, 0.3);
+  padding: 1em;
+  border-radius: 5px;
+}
+
+#control-panel:hover {
+  background: rgba(65, 65, 65, 0.9);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+#control-panel input,
+#control-panel button {
+  background-color: rgba(255, 255, 255, 0.3);
+  color: rgba(0, 0, 0, 0.3);
+  border: none;
+  padding: 0.5em;
+  margin: 0.25em 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#control-panel:hover input,
+#control-panel:hover button {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.9);
+}
+
+#control-panel input[type="range"] {
+  opacity: 0.3;
+}
+
+#control-panel:hover input[type="range"] {
+  opacity: 0.9;
+}
+
+#control-panel input[type="text"] {
+  width: 6ch;
 }

@@ -7,9 +7,31 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <form id="border">
-      <div class="container" id="grid"></div>
-    </form>
+    <div id="container">
+      <div id="grid"></div>
+      <div id="control-panel">
+        <h2>Control Panel</h2>
+        <label for="step-skip-slider">Step Skip:</label>
+        <div>
+          <input
+            type="range"
+            id="step-skip-slider"
+            min="0"
+            max="100"
+            value="0"
+          />
+          <input
+            type="text"
+            id="step-skip-input"
+            min="0"
+            max="10000"
+            value="0"
+          />
+        </div>
+        <label for="add-ant-button">Ant Count:</label>
+        <button id="add-ant-button" type="submit">Add Ant</button>
+      </div>
+    </div>
     <script type="module" src="script.js"></script>
   </body>
 </html>

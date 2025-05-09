@@ -3,7 +3,38 @@ import Ant from "./Ant.js";
 let tiles = []; // 2D array [row][col]
 let rows, cols;
 let ant;
-let skipSteps = 1; // Number of steps to skip
+let skipSteps = 0; // Number of steps to skip
+
+const skipSlider = document.getElementById("step-skip-slider");
+const skipInput = document.getElementById("step-skip-input");
+const addAntButton = document.getElementById("add-ant-button");
+
+skipInput.addEventListener("input", () => {
+  const value = parseInt(skipInput.value, 10);
+  if (!isNaN(value)) {
+    skipSteps = value;
+    skipSlider.value = value;
+  }
+});
+
+skipSlider.addEventListener("input", () => {
+  const value = parseInt(skipSlider.value, 10);
+  if (!isNaN(value)) {
+    skipSteps = value;
+    skipInput.value = value;
+  }
+});
+
+addAntButton.addEventListener("click", () => {
+  placeAnt();
+});
+
+function main() {
+  skipSteps = 0;
+  skipInput.value = skipSteps;
+  skipSlider.value = skipSteps;
+  createGrid();
+}
 
 function createGrid() {
   const grid = document.getElementById("grid");
@@ -32,14 +63,6 @@ function createGrid() {
   }
 }
 
-document.addEventListener("keydown", function (event) {
-  if (event.code === "Space") {
-    event.preventDefault(); // Prevents scrolling
-    createGrid(); // Recreate grid on spacebar press
-    placeAnt(); // create ant here
-  }
-});
-
 function placeAnt() {
   const startCol = Math.floor(cols / 2);
   const startRow = Math.floor(rows / 2);
@@ -49,12 +72,12 @@ function placeAnt() {
 }
 
 function animate() {
-  for (let i = 0; i < skipSteps; i++) {
+  for (let i = 0; i < skipSteps + 1; i++) {
     ant.step();
   }
   requestAnimationFrame(animate);
 }
 
-window.addEventListener("load", createGrid);
+window.addEventListener("load", main);
 // Optional: Also update on resize
 window.addEventListener("resize", createGrid);
